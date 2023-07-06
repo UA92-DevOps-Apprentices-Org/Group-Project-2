@@ -6,6 +6,13 @@ import Card from "@/components/card";
 export default function Home() {
     //TODO: This code needs to be configured to run in a webworker of somekind to get rid of delays in the main thread \
     //      This should help solve some of the performance issues and visual bugs.
+    //
+    //      Webworker code belongs in @/public/worker.ts
+    //
+    //      Occasionally, the div height jumps causing a sudden and noticable shift. It happens on a regular basis and the 
+    //      WebProfiler on firefox identifies that some other process is blocking the animation from running propperly. I
+    //      suspect it is from some background process in either Next or React that is taking over the main thread. Putting
+    //      this code into a webworker will allow it to run on a seperate thread instead
     const divRef = React.useRef<HTMLDivElement | null>(null);
     const [trackingID, setTrackingID] = React.useState<number | null>(null);
 
@@ -13,14 +20,13 @@ export default function Home() {
 
     React.useEffect(() => {
         const track = () => {
-            const start = Date.now();
             
-            function bind() {
+            function bind(): void {
                 let winOffset = document.body.scrollTop || document.documentElement.scrollTop;
                 let scaleFactor = (1-(winOffset / 850));
                 if(divRef.current) {
                     divRef.current.style.visibility = (scaleFactor <= 0) ? "hidden" : "visible";
-                    divRef.current.style.transform = `scaleY(${ scaleFactor } )`
+                    divRef.current.style.transform = `scaleY(${ scaleFactor } )` // Transform property can be offloaded onto the GPU, speeding up execution
                 }
                 setTrackingID(requestAnimationFrame(bind));
             }
@@ -40,7 +46,7 @@ export default function Home() {
 
             #test {
                 transform-origin: bottom;
-            }
+                transition: transform 50ms ease-out;            
         `}</style>
         {/* Hero Section */}
         <div onClick={stopTracking} className="fixed top-0 left-0 bg-red-500 w-[400px]">
