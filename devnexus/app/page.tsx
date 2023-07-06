@@ -4,25 +4,32 @@ import Card from "@/components/card";
 
 
 export default function Home() {
-  
-    const [data, setData] = React.useState("");
-    const [offset, setOffset] = React.useState(50);
+    //TODO: This code needs to be configured to run in a webworker of somekind to get rid of delays in the main thread \
+    //      This should help solve some of the performance issues and visual bugs.
+    const divRef = React.useRef<HTMLDivElement | null>(null);
+    const [trackingID, setTrackingID] = React.useState<number | null>(null);
 
-    const handleScroll = (e: Event) => {
-        const winOffset = document.body.scrollTop || document.documentElement.scrollTop;
-        const height    = document.documentElement.scrollHeight
-                        - document.documentElement.clientHeight;
-        const scrolled  = winOffset / height;
-        setOffset(scrolled);
-        console.log("test")
-    };
+    const stopTracking = () => {if(trackingID) cancelAnimationFrame(trackingID);}
 
     React.useEffect(() => {
-        window.addEventListener('scroll', handleScroll, {passive: true});
+        const track = () => {
+            const start = Date.now();
+            
+            function bind() {
+                let winOffset = document.body.scrollTop || document.documentElement.scrollTop;
+                let scaleFactor = (1-(winOffset / 850));
+                if(divRef.current) {
+                    divRef.current.style.visibility = (scaleFactor <= 0) ? "hidden" : "visible";
+                    divRef.current.style.transform = `scaleY(${ scaleFactor } )`
+                }
+                setTrackingID(requestAnimationFrame(bind));
+            }
 
-        return () => {window.removeEventListener('scroll', handleScroll)};
+            requestAnimationFrame(bind);
+
+        }
+        track();
     }, []);
-
 
     return (
         <>
@@ -30,28 +37,21 @@ export default function Home() {
             #title {
             max-width: 70%;
             }
-            
-            .special {
-            
-            }
 
-            .special:before {
-                content:'';
-                position: absolute;
-                top: ${offset}px;
-                bottom: 50px;
-                left: 50px;
-                right: 50px;
-                background-color: red;
+            #test {
+                transform-origin: bottom;
             }
-
-            
         `}</style>
         {/* Hero Section */}
-
+        <div onClick={stopTracking} className="fixed top-0 left-0 bg-red-500 w-[400px]">
+            {"test"}
+        </div>
         <section className="w-screen h-screen bg-slate-100">
-            <div className="special absolute top-6 left-6 right-6 bottom-24 rounded-3xl flex flex-row">
-            <h1 id="title" className="self-center relative font-bold left-10 text-7xl">Meet Your Tech Goals<br/> with <span>DevNexus</span></h1>
+            <div id="test" ref={divRef} className="absolute left-6 bottom-24 right-6 h-[850px] bg-slate-800 rounded-3xl">
+
+            </div>
+            <div id="special"className="hidden absolute overflow-hidden left-6 right-6 bottom-24 bg-slate-800 rounded-3xl flex flex-row">
+                <h1 className="self-center relative font-bold left-10 text-7xl">Meet Your Tech Goals<br/> with <span>DevNexus</span></h1>
             </div>
             <div className="flex absolute bottom-6 left-6 right-6 items-center">
             <h2 className="text-black text-2xl hidden font-semibold md:block">Find out why our customers love us </h2>
