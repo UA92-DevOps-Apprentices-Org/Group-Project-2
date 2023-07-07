@@ -16,8 +16,8 @@ export default function Home() {
                 transition: transform 30ms ease-out;            
         `}</style>
         {/* Hero Section */}
-        <section className="w-screen h-screen bg-slate-100">
-            <Hero className="">
+        <section className="w-screen h-screen bg-slate-100 relative">
+            <Hero className="bottom-24 inset-6">
                 <h1 className="self-center relative font-bold left-10 text-7xl">Meet Your Tech Goals<br/> with <span>DevNexus</span></h1>
             </Hero>
             <div className="flex absolute bottom-6 left-6 right-6 items-center">
