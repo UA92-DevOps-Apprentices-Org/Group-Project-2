@@ -1,101 +1,37 @@
-'use client'
-type Props = {
+// useLayoutEffect alternative
+'use client';
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useMotionValueEvent, useScroll, useSpring, useTransform, useWillChange } from "framer-motion";
 
-}
+export default function Test() {
 
-export default function test({}: Props) {
+    const visibile = useMotionValue("visible");
+    
+    const willChange = useWillChange();
+    const {scrollY, scrollYProgress} = useScroll();
+    const scaleX = useTransform(scrollY,(value) => {
+        const out = 600-0.61*value;
+        if (out < 50) {
+            visibile.set("hidden");
+            return 0;
+        }
+        visibile.set("visible")
+        return(out)
+    })
+    const scaleY = useSpring(scaleX, {stiffness: 200, damping: 100, bounce: 0, mass: 0.1, restDelta: 0.5})
+
+    // useMotionValueEvent(scrollY, "change", (latest) => {
+    //     console.log(latest);
+
+    // })
 
     return <>
-    <style jsx>{`
-        .mask {
-            position: fixed;
-            inset: 50px;
-            background: red;
-            overflow: hidden;
-            mask-image: linear-gradient(transparent,rgba(0,0,0,1))
-        }
-
-        .nomask {
-            position: fixed;
-            inset: 50px;
-            overflow: hidden;
-        }
-
-        .content {
-            position: absolute;
-            inset: 0;
-            overflow-y: scroll;
-
-        }
-    
-    
-    `}</style>
-    <div className="overflow-auto relative">
-        <div className="mask">
-            <div className="content">
-                <h1 className="">Test</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1 className="h-[1000px]">aaaa</h1>
-
-            </div>
-        </div>
-        <div className="nomask">
-            <div className="content">
-                <h1 className="">Test</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1><h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1>aaaa</h1>
-                <h1 className="h-[1000px]">aaaa</h1>
-            </div>
-        </div>
-    </div>
-    
-    <div className="h-[1000px]"></div>
+    <motion.div style={{height: scaleY, willChange, visibility: visibile}} className="fixed height-3/4 min-h-96 right-6 left-6 top-6 overflow-hidden origin-top">
+        <div id="other" className="absolute inset-0 bg-red-500 rounded-[33px]"></div>
+    </motion.div>
+    <motion.div id="test" style={{height: scaleY, willChange}} className="rounded-[33px] absolute bottom-6 right-6 left-6 height-3/4 bg-slate-800 origin-bottom">
+        
+    </motion.div>
+    <div className="h-[4000px]"></div>
     </>
 }
