@@ -38,7 +38,7 @@ export default function Hero({ children, className }: Props) {
 
 
     return <>
-    <div id="box" className={className} style={{height: "1000px", position: "relative"}}>
+    <div id="box" className={className} style={{height: "1000px", position: "absolute"}}>
         <motion.div id="top-half" style={{height, willChange, visibility}} className="fixed height-3/4 min-h-96 right-6 left-6 top-6 overflow-hidden bg-slate-800 rounded-[33px] origin-top"/>
         <motion.div id="bottom-half" style={{height, willChange, visibility}} className="rounded-[33px] right-0 left-0 bottom-0 absolute height-3/4 bg-slate-800 origin-bottom"/>
             
