@@ -30,3 +30,19 @@ body {
 p, h1, h2, h3, h4, h5, a {
   font-family: 'Roboto', 'Arial';
 }
+
+main {
+  height: max-content;
+  position: relative;
+}
+
+main::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(/bg.bmp);
+  opacity: 0.3;
+  background-repeat: repeat;
+  z-index: -1;
+}

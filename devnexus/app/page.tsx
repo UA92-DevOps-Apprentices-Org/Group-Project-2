@@ -21,7 +21,7 @@ export default function Home() {
                 <h1 className="self-center relative font-bold left-10 text-7xl">Meet Your Tech Goals<br/> with <span>DevNexus</span></h1>
             </Hero>
             <div className="flex absolute bottom-6 left-6 right-6 items-center">
-            <h2 className="text-black text-2xl hidden font-semibold md:block">Find out why our customers love us </h2>
+            <h2 className="text-white text-2xl hidden font-semibold md:block">Find out why our customers love us </h2>
             <div className="ml-auto h-16 min-w-[24rem] rounded-full bg-slate-800 flex">
                 <h2 className="self-center text-center  font-bold w-full text-xl">Read Testimonials</h2>
             </div>

@@ -21,11 +21,11 @@ export default function RootLayout({
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
       </head>
       <body  className="overflow-x-hidden bg-slate-600">
-        <div style={{backgroundImage: "url(/bg.bmp)"}} className='absolute bg-blend-multiply overflow-visible w-full bg-repeat' >
         <Navbar />
+        <main >
         {children}
+        </main>
         <Footer /> 
-        </div>
       </body>
     </html>
   )
