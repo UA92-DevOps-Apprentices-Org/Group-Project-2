@@ -24,7 +24,7 @@ export default function Hero({ children, className }: Props) {
     // Div Height Transforms
     const chain = useTransform(scrollY, (value) => {
         const out = 600 - 0.70*value;
-        if (out < 50) {
+        if (out < 20) {
             visibility.set("hidden");
             return 0;
         }
@@ -36,11 +36,30 @@ export default function Hero({ children, className }: Props) {
     // Opacity Transforms
     const opacityChain = useTransform(scrollYProgress, [0,0.2], [1,0])
 
-
     return <>
-    <div id="box" className={className} style={{ position: "absolute", right: "2.5rem"}}>
-        <motion.div id="top-half" style={{height, willChange, visibility}} className="fixed height-3/4 min-h-96 right-6 left-6 top-6 overflow-hidden bg-slate-800 rounded-[33px] origin-top"/>
-        <motion.div id="bottom-half" style={{height, willChange, visibility}} className="rounded-[33px] right-0 left-0 bottom-0 absolute height-3/4 bg-slate-800 origin-bottom"/>
+    <div id="box" className={className} style={{ position: "absolute", }}>
+        <motion.div id="top-half" style={{
+            height, 
+            willChange, 
+            visibility, 
+            background: "url(/hero.png)", 
+            backgroundAttachment: "fixed", 
+            backgroundSize: "cover", 
+            backgroundPositionX: "center", 
+            backgroundPositionY: "bottom",
+            boxShadow: `0px 10px 10px 0px rgba(0,0,0,0.5)`
+            }} className="fixed height-3/4 min-h-96 right-6 left-6 top-6 overflow-hidden bg-slate-800 rounded-[33px] origin-top"/>
+        <motion.div id="bottom-half" style={{
+            height, 
+            willChange, 
+            visibility, 
+            background: "url(/hero.png)", 
+            backgroundAttachment: "fixed", 
+            backgroundSize: "cover", 
+            backgroundPositionX: "center", 
+            backgroundPositionY: "bottom",
+            boxShadow: `0px 10px 10px 0px rgba(0,0,0,0.5)`
+            }} className="rounded-[33px] right-0 left-0 bottom-0 absolute height-3/4 bg-slate-800 origin-bottom"/>
             
         <motion.div id="insert" style={{opacity: opacityChain}} className="h-full w-full fixed flex place-items-center">
             {children}
