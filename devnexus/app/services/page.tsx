@@ -7,8 +7,24 @@ export default function Services() {
     <>
       <div className="h-full pt-32 px-10">
         <div>
-          <div className="font-roboto text-[#D5B0F5] font-bold text-center text-6xl sml:text-8xl">
-            Services
+          <div className="text-center text-6xl sml:text-8xl">
+            <h1
+              style={{
+                textShadow: "0px 4px 15px 0px rgba(0, 0, 0, 0.80)",
+                fontFamily: "Roboto",
+                fontSize: "80px",
+                fontStyle: "normal",
+                fontWeight: "800",
+                lineHeight: "81.687%",
+                letterSpacing: "-1.44px",
+                background: "linear-gradient(0deg, #D5B0F5 0%, #FFF 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Services
+            </h1>
           </div>
           <div className="flex lgl:px-10">
             <div className="font-roboto text-xl text-white font-bold pt-10 md:text-2xl xl:px-20 xl:text-4xl">
