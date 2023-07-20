@@ -18,7 +18,7 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: white;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -45,4 +45,10 @@ main::before {
   opacity: 0.3;
   background-repeat: repeat;
   z-index: -1;
+}
+
+.profileImg {
+  height: 300px;
+  width: auto;
+  border: solid black 1px;
 }
