@@ -1,4 +1,40 @@
 "use client";
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+interface CarouselItem {
+  imageUrl: string;
+  alt: string;
+}
+
+const carouselItems: CarouselItem[] = [
+  {
+    imageUrl: "/borat.jpg",
+    alt: "Image 1",
+  },
+  {
+    imageUrl: "/borat2.jpg",
+    alt: "Image 2",
+  },
+  {
+    imageUrl: "/borat3.jpg",
+    alt: "Image 3",
+  },
+  // Add more carousel items as needed
+];
+
+const CarouselSlider = () => {
+  return (
+    <Carousel autoPlay infiniteLoop showThumbs={false} interval={3000}>
+      {carouselItems.map((item, index) => (
+        <div key={index}>
+          <img src={item.imageUrl} alt={item.alt} />
+        </div>
+      ))}
+    </Carousel>
+  );
+};
 
 export default function Portfolio() {
   return (
@@ -6,27 +42,36 @@ export default function Portfolio() {
       <div className="h-full py-32 px-10">
         <div>
           <div className="text-center text-6xl sml:text-8xl">
-          <h1 style={{
-                "textShadow": "0px 4px 15px 0px rgba(0, 0, 0, 0.80)",
-                "fontFamily": "Roboto",
-                "fontSize": "80px",
-                "fontStyle": "normal",
-                "fontWeight": "800",
-                "lineHeight": "81.687%",
-                "letterSpacing": "-1.44px",
-                "background": "linear-gradient(0deg, #D5B0F5 0%, #FFF 100%)",
-                "backgroundClip": "text",
-                "WebkitBackgroundClip": "text",
-                "WebkitTextFillColor": "transparent"
-        }}>Portfolio</h1>
+            <h1
+              style={{
+                textShadow: "0px 4px 15px 0px rgba(0, 0, 0, 0.80)",
+                fontFamily: "Roboto",
+                fontSize: "80px",
+                fontStyle: "normal",
+                fontWeight: "800",
+                lineHeight: "81.687%",
+                letterSpacing: "-1.44px",
+                background: "linear-gradient(0deg, #D5B0F5 0%, #FFF 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Portfolio
+            </h1>
           </div>
           <div className="flex lgl:px-10 pb-8">
             <div className="font-roboto text-xl text-white font-bold pt-10 md:text-2xl xl:px-20 xl:text-4xl">
-            Welcome to our diverse world of talent and innovation! Here at DevNexus, 
-            we take pride in our exceptional teams, each of which possesses a unique portfolio of skills and accomplishments. 
-            As we embark on this journey, let us introduce you to the brilliance that defines our teams.
+              Welcome to our diverse world of talent and innovation! Here at
+              DevNexus, we take pride in our exceptional teams, each of which
+              possesses a unique portfolio of skills and accomplishments. As we
+              embark on this journey, let us introduce you to the brilliance
+              that defines our teams.
             </div>
           </div>
+        </div>
+        <div>
+          <CarouselSlider />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10 lgl:px-20">
           <Card
@@ -100,7 +145,15 @@ interface Props {
   skills3: string;
 }
 
-const Card = ({ name, description, link, profileImage, skills1, skills2, skills3}: Props) => {
+const Card = ({
+  name,
+  description,
+  link,
+  profileImage,
+  skills1,
+  skills2,
+  skills3,
+}: Props) => {
   return (
     <a href={link} target="_blank">
       <div className="bg-gradient-to-t from-slate-900 via-purple-900 to-slate-900 rounded-lg p-7 flex flex-col justify-center gap-6 hover:-translate-y-2 transition-transform duration-300 h-full">
@@ -109,22 +162,17 @@ const Card = ({ name, description, link, profileImage, skills1, skills2, skills3
             {name}
           </h2>
           <div className="flex items-center justify-center py-4">
-           <img src={profileImage} alt={name} className="profileImg"/>
+            <img src={profileImage} alt={name} className="profileImg" />
           </div>
-           <p className="text-sm mt-3 text-[#B2BEFF]">
-            {description}
-           </p>
-           <h3 className="text-xl text-[#F6F196] font-semibold pt-4">
-            Skills:</h3>
-           <ul className="text-sm mt-3 text-[#B2BEFF] list-disc pl-9">
-             <li>{skills1}</li>
-             <li>{skills2}</li>
-             <li>{skills3}</li>
-           </ul>
+          <p className="text-sm mt-3 text-[#B2BEFF]">{description}</p>
+          <h3 className="text-xl text-[#F6F196] font-semibold pt-4">Skills:</h3>
+          <ul className="text-sm mt-3 text-[#B2BEFF] list-disc pl-9">
+            <li>{skills1}</li>
+            <li>{skills2}</li>
+            <li>{skills3}</li>
+          </ul>
         </div>
       </div>
     </a>
   );
 };
-
-
