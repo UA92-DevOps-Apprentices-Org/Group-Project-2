@@ -23,6 +23,7 @@ export default function RootLayout({
       <body  className="overflow-x-hidden bg-slate-600">
         <Navbar />
         <main className='min-h-screen'>
+        <div className='h-32' />
         {children}
         </main>
         <Footer /> 

@@ -18,7 +18,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="w-screen h-screen relative">
         <Hero className="bottom-24 inset-6">
-          <h1 className="self-center relative font-bold left-10 text-7xl">
+          <h1 className="relative font-bold -top-24 left-10 text-7xl">
             Meet Your Tech Goals
             <br /> with <span>DevNexus</span>
           </h1>
