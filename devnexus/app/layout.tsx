@@ -20,9 +20,10 @@ export default function RootLayout({
       <head>
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
       </head>
-      <body  className="overflow-x-hidden bg-slate-600">
+      <body  className="overflow-x-hidden flex flex-col min-h-screen bg-slate-600">
         <Navbar />
-        <main className='min-h-screen'>
+        <main className='grow'>
+        <div className='h-32' />
         {children}
         </main>
         <Footer /> 

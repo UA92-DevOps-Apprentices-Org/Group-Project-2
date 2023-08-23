@@ -23,7 +23,7 @@ export default function Hero({ children, className }: Props) {
 
     // Div Height Transforms
     const chain = useTransform(scrollY, (value) => {
-        const out = 600 - 0.70*value;
+        const out = 600 - 0.60*value;
         if (out < 20) {
             visibility.set("hidden");
             return 0;
