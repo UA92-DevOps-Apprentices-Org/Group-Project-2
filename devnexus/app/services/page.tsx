@@ -1,7 +1,7 @@
 "use client";
 import Lottie from "lottie-react";
 import animationData from "../../src/assets/Services.json";
-import Card from "../../components/card";
+import Card from "@/components/card";
 
 export default function Services() {
   return (

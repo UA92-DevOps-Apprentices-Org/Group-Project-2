@@ -61,7 +61,7 @@ export default function Hero({ children, className }: Props) {
             boxShadow: `0px 10px 10px 0px rgba(0,0,0,0.5)`
             }} className="rounded-[33px] right-0 left-0 bottom-0 absolute height-3/4 bg-slate-800 origin-bottom"/>
             
-        <motion.div id="insert" style={{opacity: opacityChain}} className="h-full w-full fixed flex place-items-center">
+        <motion.div id="insert" style={{opacity: opacityChain}} className="h-full pointer-events-none w-full fixed flex place-items-center">
             {children}
         </motion.div>
     </div>

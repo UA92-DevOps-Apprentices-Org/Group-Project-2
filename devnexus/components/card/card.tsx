@@ -10,7 +10,7 @@ export default function Card({ title, description, link }: Props) {
       <div className="group bg-[#ffff] rounded-lg p-7 flex flex-col justify-center gap-6 hover:bg-[#9300ff] hover:text-white hover:-translate-y-2 transition-transform duration-300 h-full">
         <div>
           <h2 className="text-xl text-[#9300ff] font-semibold group-hover:text-white">{title}</h2>
-          <p className="text-sm mt-3 text-[#000000] group-hover:text-white">{description}</p>
+          <p className="text-sm mt-3 text-[#3a122f] group-hover:text-white">{description}</p>
         </div>
       </div>
     </a>
