@@ -40,12 +40,12 @@ function Footer() {
     </div>
     <div className=''>
       <ul>
-        <li><Link href="">About Us</Link></li>
-        <li><Link href="">Github</Link></li>
-        <li><Link href="">Socials</Link></li>
-        <li><Link href="">Contact Us</Link></li>
-        <li><Link href="">Careers</Link></li>
-        <li><Link href="">User Data & Privacy Statement</Link></li>
+        <li><Link href="/">About Us</Link></li>
+        <li><Link href="/">Github</Link></li>
+        <li><Link href="/">Socials</Link></li>
+        <li><Link href="/">Contact Us</Link></li>
+        <li><Link href="/">Careers</Link></li>
+        <li><Link href="/">User Data & Privacy Statement</Link></li>
       </ul>
     </div>
   </footer>
