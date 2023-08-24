@@ -1,6 +1,7 @@
 "use client";
 import Lottie from "lottie-react";
 import animationData from "../../src/assets/Services.json";
+import Card from "../../components/card";
 
 export default function Services() {
   return (
@@ -28,10 +29,9 @@ export default function Services() {
           </div>
           <div className="flex lgl:px-10">
             <div className="font-roboto text-xl text-white font-bold pt-10 md:text-2xl xl:px-20 xl:text-4xl">
-              With DevNexus, you can relax and enjoy your product development
-              journey. We professionally handle every step from project
-              discovery to development and further support. We always care for
-              our clients’ projects as if they were ours.
+              With DevNexus, you can relax and enjoy your product development journey. We
+              professionally handle every step from project discovery to development and further
+              support. We always care for our clients’ projects as if they were ours.
             </div>
             <div className="hidden lg:block">
               <Lottie animationData={animationData} />
@@ -75,21 +75,21 @@ export default function Services() {
   );
 }
 
-interface Props {
-  title: string;
-  description: string;
-  link: string;
-}
+// interface Props {
+//   title: string;
+//   description: string;
+//   link: string;
+// }
 
-const Card = ({ title, description, link }: Props) => {
-  return (
-    <a href={link} target="_blank">
-      <div className="bg-[#11009E] rounded-lg p-7 flex flex-col justify-center gap-6 hover:-translate-y-2 transition-transform duration-300 h-full">
-        <div>
-          <h2 className="text-xl text-[#FFF48F] font-semibold ">{title}</h2>
-          <p className="text-sm mt-3 text-[#B2BEFF]">{description}</p>
-        </div>
-      </div>
-    </a>
-  );
-};
+// const Card = ({ title, description, link }: Props) => {
+//   return (
+//     <a href={link} target="_blank">
+//       <div className="group bg-[#ffff] rounded-lg p-7 flex flex-col justify-center gap-6 hover:bg-[#9300ff] hover:text-white hover:-translate-y-2 transition-transform duration-300 h-full">
+//         <div>
+//           <h2 className="text-xl text-[#9300ff] font-semibold group-hover:text-white">{title}</h2>
+//           <p className="text-sm mt-3 text-[#000000] group-hover:text-white">{description}</p>
+//         </div>
+//       </div>
+//     </a>
+//   );
+// };
