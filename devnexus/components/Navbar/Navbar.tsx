@@ -7,7 +7,7 @@ export default function Navbar() {
             <Link className="text-lg font-bold ml-auto" href={"/about"}>About Us</Link>
             <Link className="text-lg font-bold" href={"/services"}>Services</Link>
             <Link className="text-lg font-bold" href={"/portfolio"}>Portfolio</Link>
-            <Link className="text-lg font-bold" href={""}>Contact</Link>
+            <Link className="text-lg font-bold" href={"/contact"}>Contact</Link>
 
         </nav>
     </>
