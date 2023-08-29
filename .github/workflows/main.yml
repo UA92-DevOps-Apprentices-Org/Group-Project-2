@@ -35,7 +35,7 @@ jobs:
             username: ${{github.actor}}
             password: ${{secrets.GITHUB_TOKEN}}
         - name: build the docker image
-          run: cd infra docker compose build
+          run: cd infra && docker compose build
 
         - name: push to ghcr.io
           run: docker push ghcr.io/ua92-devops-apprentices-org/gp2-frontend
