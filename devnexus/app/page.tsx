@@ -27,10 +27,8 @@ export default function Home() {
           <h2 className="text-white text-2xl hidden font-semibold md:block">
             Find out why our customers love us{" "}
           </h2>
-          <div className="ml-auto h-16 min-w-[24rem] rounded-full bg-slate-800 flex">
-            <h2 className="self-center text-center  font-bold w-full text-xl">
-              Read Testimonials
-            </h2>
+          <div className="ml-auto h-16 min-w-[24rem] rounded-full bg-purple-800 flex">
+            <h2 className="self-center text-center  font-bold w-full text-xl">Read Testimonials</h2>
           </div>
         </div>
       </section>
@@ -42,37 +40,33 @@ export default function Home() {
           <br />
           Tenets
         </h1>
-        <div className="h-0 basis-full"></div>
-        <Card
-          className=""
-          title="this is a test heading"
-          content="This is a test content"
-        />
-        <Card
-          className=""
-          title="I'm a box! Help!"
-          content="This is some example content tnetnoc elpmaxe emos si siht!!"
-        />
-        <Card
-          className=""
-          title="I'm a box! Help!"
-          content="This is some example content tnetnoc elpmaxe emos si siht!!"
-        />
-        <Card
-          className=""
-          title="I'm a box! Help!"
-          content="This is some example content tnetnoc elpmaxe emos si siht!!"
-        />
-        <Card
-          className=""
-          title="I'm a box! Help!"
-          content="This is some example content tnetnoc elpmaxe emos si siht!"
-        />
-        <Card
-          className=""
-          title="I'm a box! Help!"
-          content="This is some example content tnetnoc elpmaxe emos si siht!"
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
+          <Card
+            link="#"
+            title="Test"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut."
+          />
+          <Card
+            link="#"
+            title="Test"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut."
+          />
+          <Card
+            link="#"
+            title="Test"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut."
+          />
+          <Card
+            link="#"
+            title="Test"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut."
+          />
+          <Card
+            link="#"
+            title="Test"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut."
+          />
+        </div>
       </section>
       {/* Case Study Testimonial */}
       <section></section>
