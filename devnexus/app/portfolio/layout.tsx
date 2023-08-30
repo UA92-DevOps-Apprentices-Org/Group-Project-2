@@ -22,7 +22,7 @@ export default function PortfolioLayout({children}:{children: React.ReactNode}) 
     <div className="flex flex-col place-items-center justify-center pb-16 px-5">
 
     {/* Banner Section */}
-    <Banner />
+    <banner />
 
 
 
@@ -34,7 +34,7 @@ export default function PortfolioLayout({children}:{children: React.ReactNode}) 
     </>
 }
 
-function Banner( ) {
+function banner( ) {
 
     // set pointer, route to next page. use banner pointer to index urls
 

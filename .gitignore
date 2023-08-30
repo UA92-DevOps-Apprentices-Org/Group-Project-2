@@ -130,3 +130,5 @@ dist
 .pnp.*
 infra/tf/credentials.auto.tfvars
 .terraform/
+.tfstate
+*.tfstate

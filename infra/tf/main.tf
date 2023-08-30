@@ -61,15 +61,26 @@ resource "aws_route_table_association" "rt-a-3" {
     route_table_id = aws_route_table.rt.id
 }
 
+resource "aws_security_group" "sg" {
+    name = "sg"
+    vpc_id = aws_vpc.main.id
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+}
+
 module "ecs-fargate" {
     source = "cn-terraform/ecs-fargate/aws"
     version = "2.0.52"
 
     container_image = "ghcr.io/ua92-devops-apprentices-org/gp2-frontend"
     port_mappings = [{
-      containerPort = 3000
-      hostPort = 3000
-      protocol = "tcp"
+      containerPort = 80
+      hostPort = 80
+      protocol = "http"
     }]
     vpc_id = aws_vpc.main.id
     public_subnets_ids = [aws_subnet.public.id, aws_subnet.public_2.id]
@@ -80,9 +91,10 @@ module "ecs-fargate" {
     lb_http_ports = {
       "default_http" : {
         "listener_port" : 80,
-        "target_group_port" : 3000
+        "target_group_port" : 80
       }
     }
     lb_https_ports = {}
+    ecs_service_security_groups = [aws_security_group.sg.id]
 }
 
