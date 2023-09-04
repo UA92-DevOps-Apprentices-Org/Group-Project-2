@@ -7,3 +7,4 @@ availability_zones = [""]
 environment = ""
 name = ""
 container_port = 0
+image_name = ""
