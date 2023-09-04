@@ -15,3 +15,4 @@ variable "availability_zones" {}
 variable "environment" {}
 variable "name" {}
 variable "container_port" {}
+variable "image_name" {}
